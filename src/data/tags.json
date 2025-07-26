@@ -1,0 +1,17 @@
+[
+  { "id": 1, "name": "JavaScript", "updatedAt": "2025-07-20T14:23:00Z" },
+  { "id": 2, "name": "React", "updatedAt": "2025-07-18T09:47:12Z" },
+  { "id": 3, "name": "TypeScript", "updatedAt": "2025-07-15T16:10:33Z" },
+  { "id": 4, "name": "Node.js", "updatedAt": "2025-07-21T11:02:55Z" },
+  { "id": 5, "name": "Next.js", "updatedAt": "2025-07-19T19:30:44Z" },
+  { "id": 6, "name": "Python", "updatedAt": "2025-07-20T08:17:29Z" },
+  { "id": 7, "name": "Django", "updatedAt": "2025-07-17T22:45:11Z" },
+  { "id": 8, "name": "AWS", "updatedAt": "2025-07-21T05:59:40Z" },
+  { "id": 9, "name": "Docker", "updatedAt": "2025-07-16T14:12:00Z" },
+  { "id": 10, "name": "Kubernetes", "updatedAt": "2025-07-20T20:25:10Z" },
+  { "id": 11, "name": "Linux", "updatedAt": "2025-07-14T07:35:26Z" },
+  { "id": 12, "name": "CI/CD", "updatedAt": "2025-07-13T18:50:05Z" },
+  { "id": 13, "name": "Git", "updatedAt": "2025-07-12T12:15:30Z" },
+  { "id": 14, "name": "Vim", "updatedAt": "2025-07-11T09:05:42Z" },
+  { "id": 15, "name": "SQL", "updatedAt": "2025-07-10T10:22:17Z" }
+]
