@@ -10,16 +10,12 @@ type Props = {
   bookmarkList: BookmarkList | null;
 };
 export const BookmarkGrid = (props: Props) => {
-  console.log(props.bookmarkList);
-
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Grid
         container
         spacing={2}
-        justifyContent={"center"}
-        maxWidth={1024}
-        margin={"0 auto"}
+        sx={{ justifyContent: "center", maxWidth: 1024, margin: "0 auto" }}
       >
         {props.bookmarkList &&
           props.bookmarkList.map((bookmark, key) => {

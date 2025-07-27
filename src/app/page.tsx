@@ -1,4 +1,5 @@
 "use client";
+
 import type { BookmarkList } from "@/type";
 import { useEffect, useState } from "react";
 import { BookmarkGrid } from "@/components/BookmarkGrid";
@@ -22,7 +23,6 @@ export default function HomePage() {
   useEffect(() => {
     setPageCount(Math.ceil(getCountAllBookmarks() / OFFSET));
     setBookmarkList(getBookmarks(pageNum, OFFSET));
-    console.log(pageCount, pageNum);
   }, [pageNum]);
   return (
     <>
