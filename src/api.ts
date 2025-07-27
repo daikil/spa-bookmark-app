@@ -1,5 +1,6 @@
-import { BookmarkList } from "./type";
+import { BookmarkList, Tag } from "./type";
 import bookmarks from "./data/bookmark.json";
+import tags from "./data/tags.json";
 
 export const getCountAllBookmarks = (): number => {
   return bookmarks.length;
@@ -24,4 +25,14 @@ export const getBookmarks = (pageNum: number, offSet: number): BookmarkList => {
       // startIndex, startIndex + offset
       .slice((pageNum - 1) * offSet, (pageNum - 1) * offSet + offSet)
   );
+};
+
+/**
+ * タグ一覧を取得する。
+ * tags 配列をIDの昇順でソートして返す。
+ *
+ * @returns ID順にソートされたタグ一覧。
+ */
+export const getAllTags = (): Tag[] => {
+  return tags.sort((a, b) => a.id - b.id);
 };
