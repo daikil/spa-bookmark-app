@@ -6,6 +6,11 @@ export const getCountAllBookmarks = (): number => {
   return bookmarks.length;
 };
 
+export const getCountBookmarksBySearchText = (searchText: string): number => {
+  return bookmarks.filter((bookmark) => bookmark.summary.includes(searchText))
+    .length;
+};
+
 /**
  * ブックマーク一覧を取得する。
  * bookmarks 配列を更新日時で降順にソートし、
@@ -18,6 +23,23 @@ export const getCountAllBookmarks = (): number => {
 export const getBookmarks = (pageNum: number, offSet: number): BookmarkList => {
   return (
     bookmarks
+      .sort(
+        (a, b) =>
+          new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime()
+      )
+      // startIndex, startIndex + offset
+      .slice((pageNum - 1) * offSet, (pageNum - 1) * offSet + offSet)
+  );
+};
+
+export const getBookmarksBySearchText = (
+  pageNum: number,
+  offSet: number,
+  searchText: string
+): BookmarkList => {
+  return (
+    bookmarks
+      .filter((bookmark) => bookmark.summary.includes(searchText))
       .sort(
         (a, b) =>
           new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime()

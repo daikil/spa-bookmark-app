@@ -1,9 +1,22 @@
 "use client";
 
+import { InputSearchTextField } from "@/components/InputSearchTextField";
+import { Box } from "@mui/material";
+import { TagCardList } from "@/components/TagCardList";
+import { getAllTags } from "@/api";
+import { useSearchText } from "@/context";
+
 export default function SearchPage() {
+  const { searchText, setSearchText } = useSearchText();
+  const tags = getAllTags();
+
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start"></main>
-    </div>
+    <Box>
+      <InputSearchTextField
+        searchText={searchText}
+        setSearchText={setSearchText}
+      />
+      <TagCardList tags={tags} />
+    </Box>
   );
 }
