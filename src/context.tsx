@@ -1,4 +1,5 @@
 "use client";
+import { usePathname } from "next/navigation";
 import { createContext, useContext, useState, ReactNode } from "react";
 
 type NavTabsContextType = {
@@ -15,7 +16,15 @@ const NavTabsContext = createContext<NavTabsContextType | null>(null);
 const SearchTextContext = createContext<SearchTextContextType | null>(null);
 
 export const NavTabsProvider = ({ children }: { children: ReactNode }) => {
-  const [navTabsValue, setNavTabsValue] = useState<number>(0);
+  const tabMap: Record<string, number> = {
+    "/": 0,
+    "/tags": 1,
+  };
+  const pathName = usePathname();
+  console.log(pathName);
+
+  const tabNumber = tabMap[pathName] ?? 0;
+  const [navTabsValue, setNavTabsValue] = useState<number>(tabNumber);
 
   return (
     <NavTabsContext.Provider value={{ navTabsValue, setNavTabsValue }}>
