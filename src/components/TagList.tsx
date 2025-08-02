@@ -5,6 +5,9 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import DeleteIcon from "@mui/icons-material/Delete";
 import IconButton from "@mui/material/IconButton";
+import Tooltip from "@mui/material/Tooltip";
+import Divider from "@mui/material/Divider";
+import { Box } from "@mui/material";
 
 type Props = {
   tags: Tag[];
@@ -13,28 +16,32 @@ type Props = {
 };
 export const TagList = (props: Props) => {
   return (
-    <List className="max-w-[360px] md:max-w-[448px] mx-auto bg-gray-200">
+    <List className="max-w-[360px] md:max-w-[448px] mx-auto border rounded-md border-gray-300">
       {props.tags.map((tag, index) => {
         return (
-          <ListItem
-            key={index}
-            secondaryAction={
-              <IconButton
-                edge="end"
-                aria-label="delete"
-                onClick={() => props.handleClickOpenAlertDialog(tag.id)}
+          <Box key={index}>
+            {index != 0 && <Divider variant="fullWidth" component="li" />}
+            <Tooltip title="編集する">
+              <ListItem
+                secondaryAction={
+                  <IconButton
+                    edge="end"
+                    aria-label="delete"
+                    onClick={() => props.handleClickOpenAlertDialog(tag.id)}
+                  >
+                    <DeleteIcon />
+                  </IconButton>
+                }
+                disablePadding
               >
-                <DeleteIcon />
-              </IconButton>
-            }
-            disablePadding
-          >
-            <ListItemButton
-              onClick={() => props.handleClickOpenEditDialog(tag)}
-            >
-              <ListItemText id={"1"} primary={`${tag.name}`} />
-            </ListItemButton>
-          </ListItem>
+                <ListItemButton
+                  onClick={() => props.handleClickOpenEditDialog(tag)}
+                >
+                  <ListItemText id={"1"} primary={`${tag.name}`} />
+                </ListItemButton>
+              </ListItem>
+            </Tooltip>
+          </Box>
         );
       })}
     </List>
