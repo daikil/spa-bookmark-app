@@ -1,0 +1,78 @@
+import { useState } from "react";
+import Box from "@mui/material/Box";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
+import SearchIcon from "@mui/icons-material/Search";
+import { validateInputSearchText, getErrorMessage } from "@/validate";
+import { useRouter } from "next/navigation";
+
+type Props = {
+  searchText: string;
+  setSearchText: (searchText: string) => void;
+};
+export const InputSearchTextField = (props: Props) => {
+  const router = useRouter();
+  const [hasError, setHasError] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [errorMessage, setErrorMessage] = useState<string>("");
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsLoading(true);
+    const result = validateInputSearchText(props.searchText);
+
+    if (!result.success) {
+      setErrorMessage(getErrorMessage(result)?.root?.[0] ?? "");
+      setHasError(true);
+      setIsLoading(false);
+      return;
+    }
+
+    setHasError(false);
+    setErrorMessage("");
+    setIsLoading(false);
+
+    router.replace("/search/result");
+  };
+  return (
+    <Box sx={{ marginBottom: 3 }}>
+      <Box
+        component="form"
+        sx={{
+          maxWidth: "sm",
+          width: "96%",
+          margin: "0 auto",
+          display: "flex",
+          flexDirection: "column",
+          rowGap: 1,
+        }}
+        noValidate
+        autoComplete="off"
+        onSubmit={handleSubmit}
+      >
+        <TextField
+          id="keyword"
+          label="キーワード"
+          type="text"
+          variant="outlined"
+          className="w-full"
+          value={props.searchText}
+          helperText={errorMessage}
+          onChange={(e) => {
+            props.setSearchText(e.target.value);
+          }}
+          error={hasError}
+        />
+        <Button
+          variant="contained"
+          endIcon={<SearchIcon />}
+          className="w-full"
+          type="submit"
+          disabled={isLoading}
+        >
+          検索
+        </Button>
+      </Box>
+    </Box>
+  );
+};
