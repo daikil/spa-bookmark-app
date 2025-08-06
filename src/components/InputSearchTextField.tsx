@@ -6,12 +6,9 @@ import SearchIcon from "@mui/icons-material/Search";
 import { validateInputSearchText, getErrorMessage } from "@/validate";
 import { useRouter } from "next/navigation";
 
-type Props = {
-  searchText: string;
-  setSearchText: (searchText: string) => void;
-};
-export const InputSearchTextField = (props: Props) => {
+export const InputSearchTextField = () => {
   const router = useRouter();
+  const [searchText, setSearchText] = useState<string>("");
   const [hasError, setHasError] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<string>("");
@@ -19,7 +16,7 @@ export const InputSearchTextField = (props: Props) => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsLoading(true);
-    const result = validateInputSearchText(props.searchText);
+    const result = validateInputSearchText(searchText);
 
     if (!result.success) {
       setErrorMessage(getErrorMessage(result)?.root?.[0] ?? "");
@@ -32,7 +29,11 @@ export const InputSearchTextField = (props: Props) => {
     setErrorMessage("");
     setIsLoading(false);
 
-    router.replace("/search/result");
+    const params = new URLSearchParams({
+      search: result.output,
+    });
+
+    router.replace(`/search/result?${params.toString()}`);
   };
   return (
     <Box sx={{ marginBottom: 3 }}>
@@ -56,10 +57,10 @@ export const InputSearchTextField = (props: Props) => {
           type="text"
           variant="outlined"
           className="w-full"
-          value={props.searchText}
+          value={searchText}
           helperText={errorMessage}
           onChange={(e) => {
-            props.setSearchText(e.target.value);
+            setSearchText(e.target.value);
           }}
           error={hasError}
         />
