@@ -7,7 +7,7 @@ import { validateInputUrl, getErrorMessage } from "@/validate";
 
 export const InputUrlField = () => {
   const [inputUrl, setInputUrl] = useState<string>("");
-  const [isError, setIsError] = useState<boolean>(false);
+  const [hasError, setHasError] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<string>("");
 
@@ -21,7 +21,7 @@ export const InputUrlField = () => {
 
     if (!result.success) {
       setErrorMessage(getErrorMessage(result)?.root?.[0] ?? "");
-      setIsError(true);
+      setHasError(true);
       setIsLoading(false);
       return;
     }
@@ -29,7 +29,7 @@ export const InputUrlField = () => {
     await delay(1000);
 
     alert(`追加成功：${result}`);
-    setIsError(false);
+    setHasError(false);
     setErrorMessage("");
     setInputUrl("");
     setIsLoading(false);
@@ -61,7 +61,7 @@ export const InputUrlField = () => {
           onChange={(e) => {
             setInputUrl(e.target.value);
           }}
-          error={isError}
+          error={hasError}
         />
         <Button
           variant="contained"
