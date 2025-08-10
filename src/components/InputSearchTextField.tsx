@@ -1,17 +1,18 @@
-import { useState } from "react";
-import Box from "@mui/material/Box";
-import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
-import SearchIcon from "@mui/icons-material/Search";
-import { validateInputSearchText, getErrorMessage } from "@/validate";
-import { useRouter } from "next/navigation";
+import { useState } from 'react';
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+import SearchIcon from '@mui/icons-material/Search';
+import { validateInputSearchText, getErrorMessage } from '@/validate';
 
-export const InputSearchTextField = () => {
-  const router = useRouter();
-  const [searchText, setSearchText] = useState<string>("");
+type Props = {
+  pushToSearchResultPage: (searchText: string) => void;
+};
+export const InputSearchTextField = (props: Props) => {
+  const [searchText, setSearchText] = useState<string>('');
   const [hasError, setHasError] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [errorMessage, setErrorMessage] = useState<string>("");
+  const [errorMessage, setErrorMessage] = useState<string>('');
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -19,32 +20,28 @@ export const InputSearchTextField = () => {
     const result = validateInputSearchText(searchText);
 
     if (!result.success) {
-      setErrorMessage(getErrorMessage(result)?.root?.[0] ?? "");
+      setErrorMessage(getErrorMessage(result)?.root?.[0] ?? '');
       setHasError(true);
       setIsLoading(false);
       return;
     }
 
     setHasError(false);
-    setErrorMessage("");
+    setErrorMessage('');
     setIsLoading(false);
 
-    const params = new URLSearchParams({
-      search: result.output,
-    });
-
-    router.replace(`/search/result?${params.toString()}`);
+    props.pushToSearchResultPage(result.output);
   };
   return (
     <Box sx={{ marginBottom: 3 }}>
       <Box
         component="form"
         sx={{
-          maxWidth: "sm",
-          width: "96%",
-          margin: "0 auto",
-          display: "flex",
-          flexDirection: "column",
+          maxWidth: 'sm',
+          width: '96%',
+          margin: '0 auto',
+          display: 'flex',
+          flexDirection: 'column',
           rowGap: 1,
         }}
         noValidate

@@ -4,3 +4,5 @@ export const PATH_NAME = {
   SEARCH: '/search',
   SEARCH_RESULT: '/search/result',
 };
+
+export const OFFSET = 10;
