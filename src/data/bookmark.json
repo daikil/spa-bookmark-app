@@ -3,154 +3,188 @@
     "id": 1,
     "url": "https://tech.example.com/posts/typescript-basics",
     "summary": "TypeScriptの基本的な型定義と使い方について解説します。",
-    "tagIds": [2, 1],
+    "tags": [
+      { "id": 2, "name": "TypeScript" },
+      { "id": 1, "name": "JavaScript" }
+    ],
     "updatedAt": "2025-07-18T10:15:30Z"
   },
   {
     "id": 2,
     "url": "https://tech.example.com/posts/intro-to-react-hooks",
     "summary": "React Hooksの導入と基本的な使用方法を紹介。",
-    "tagIds": [3, 1],
+    "tags": [
+      { "id": 3, "name": "React" },
+      { "id": 1, "name": "JavaScript" }
+    ],
     "updatedAt": "2025-07-17T08:45:10Z"
   },
   {
     "id": 3,
     "url": "https://tech.example.com/posts/deploy-node-on-vercel",
     "summary": "Vercelを使ったNode.jsアプリのデプロイ方法。",
-    "tagIds": [4, 10],
+    "tags": [
+      { "id": 4, "name": "Node.js" },
+      { "id": 10, "name": "Vercel" }
+    ],
     "updatedAt": "2025-07-20T12:00:00Z"
   },
   {
     "id": 4,
     "url": "https://tech.example.com/posts/docker-intro",
     "summary": "Dockerの基本とコンテナの作成・管理方法。",
-    "tagIds": [5],
+    "tags": [{ "id": 5, "name": "Docker" }],
     "updatedAt": "2025-07-19T11:30:00Z"
   },
   {
     "id": 5,
     "url": "https://tech.example.com/posts/css-grid-layout",
     "summary": "CSS Gridを用いたレスポンシブなレイアウトの作り方。",
-    "tagIds": [12],
+    "tags": [{ "id": 12, "name": "CSS" }],
     "updatedAt": "2025-07-21T14:22:00Z"
   },
   {
     "id": 6,
     "url": "https://tech.example.com/posts/github-actions-cicd",
     "summary": "GitHub Actionsを使ったCI/CDパイプラインの構築手順。",
-    "tagIds": [11, 15],
+    "tags": [
+      { "id": 11, "name": "GitHub" },
+      { "id": 15, "name": "CI/CD" }
+    ],
     "updatedAt": "2025-07-20T09:10:00Z"
   },
   {
     "id": 7,
     "url": "https://tech.example.com/posts/sql-index-optimization",
     "summary": "SQLのインデックス最適化によるクエリ高速化テクニック。",
-    "tagIds": [9],
+    "tags": [{ "id": 9, "name": "SQL" }],
     "updatedAt": "2025-07-15T15:00:00Z"
   },
   {
     "id": 8,
     "url": "https://tech.example.com/posts/kubernetes-basics",
     "summary": "Kubernetesの基本概念とクラスター管理の概要。",
-    "tagIds": [6, 5],
+    "tags": [
+      { "id": 6, "name": "Kubernetes" },
+      { "id": 5, "name": "Docker" }
+    ],
     "updatedAt": "2025-07-16T17:30:00Z"
   },
   {
     "id": 9,
     "url": "https://tech.example.com/posts/zenn-writing-guide",
     "summary": "Zennで技術記事を書くときのベストプラクティス。",
-    "tagIds": [],
+    "tags": [],
     "updatedAt": "2025-07-14T10:25:00Z"
   },
   {
     "id": 10,
     "url": "https://tech.example.com/posts/aws-lambda-intro",
     "summary": "AWS Lambdaの概要と簡単な使い方。",
-    "tagIds": [10, 20],
+    "tags": [
+      { "id": 10, "name": "Vercel" },
+      { "id": 20, "name": "AWS" }
+    ],
     "updatedAt": "2025-07-20T08:00:00Z"
   },
   {
     "id": 11,
     "url": "https://tech.example.com/posts/bash-script-basics",
     "summary": "初心者向けBashスクリプトの書き方入門。",
-    "tagIds": [17],
+    "tags": [{ "id": 17, "name": "Bash" }],
     "updatedAt": "2025-07-13T07:40:00Z"
   },
   {
     "id": 12,
     "url": "https://tech.example.com/posts/introduction-to-vim",
     "summary": "Vimの基本的な操作とカスタマイズ方法。",
-    "tagIds": [14],
+    "tags": [{ "id": 14, "name": "Vim" }],
     "updatedAt": "2025-07-12T20:00:00Z"
   },
   {
     "id": 13,
     "url": "https://tech.example.com/posts/python-scraping-beautifulsoup",
     "summary": "PythonとBeautifulSoupを使ったWebスクレイピングの実践。",
-    "tagIds": [7],
+    "tags": [{ "id": 7, "name": "Python" }],
     "updatedAt": "2025-07-19T10:10:00Z"
   },
   {
     "id": 14,
     "url": "https://tech.example.com/posts/react-vs-vue",
     "summary": "ReactとVueの違いを比較しながら解説。",
-    "tagIds": [3, 18],
+    "tags": [
+      { "id": 3, "name": "React" },
+      { "id": 18, "name": "Vue" }
+    ],
     "updatedAt": "2025-07-18T11:11:11Z"
   },
   {
     "id": 15,
     "url": "https://tech.example.com/posts/git-rebase-guide",
     "summary": "Gitのrebaseを使って綺麗なコミット履歴を作る方法。",
-    "tagIds": [11],
+    "tags": [{ "id": 11, "name": "GitHub" }],
     "updatedAt": "2025-07-16T16:16:16Z"
   },
   {
     "id": 16,
     "url": "https://tech.example.com/posts/css-animation-examples",
     "summary": "CSSだけで実装できるアニメーション例を多数紹介。",
-    "tagIds": [12],
+    "tags": [{ "id": 12, "name": "CSS" }],
     "updatedAt": "2025-07-11T09:09:09Z"
   },
   {
     "id": 17,
     "url": "https://tech.example.com/posts/django-rest-framework",
     "summary": "Django REST Frameworkを使ったAPI開発入門。",
-    "tagIds": [8, 7],
+    "tags": [
+      { "id": 8, "name": "Django" },
+      { "id": 7, "name": "Python" }
+    ],
     "updatedAt": "2025-07-17T13:13:00Z"
   },
   {
     "id": 18,
     "url": "https://tech.example.com/posts/vite-vs-webpack",
     "summary": "ViteとWebpackの比較と使いどころ。",
-    "tagIds": [19, 16, 1],
+    "tags": [
+      { "id": 19, "name": "Webpack" },
+      { "id": 16, "name": "Vite" },
+      { "id": 1, "name": "JavaScript" }
+    ],
     "updatedAt": "2025-07-21T15:30:00Z"
   },
   {
     "id": 19,
     "url": "https://tech.example.com/posts/sqlite-vs-mysql",
     "summary": "SQLiteとMySQLの違いと使い分けのポイント。",
-    "tagIds": [9],
+    "tags": [{ "id": 9, "name": "SQL" }],
     "updatedAt": "2025-07-10T10:10:00Z"
   },
   {
     "id": 20,
     "url": "https://tech.example.com/posts/figma-to-html",
     "summary": "FigmaのデザインをもとにHTML/CSSを組む手順。",
-    "tagIds": [13, 12],
+    "tags": [
+      { "id": 13, "name": "Figma" },
+      { "id": 12, "name": "CSS" }
+    ],
     "updatedAt": "2025-07-18T12:12:12Z"
   },
   {
     "id": 21,
     "url": "https://tech.example.com/posts/sqlite-vs-mysql",
     "summary": "SQLiteとMySQLの違いと使い分けのポイント。",
-    "tagIds": [9],
+    "tags": [{ "id": 9, "name": "SQL" }],
     "updatedAt": "2025-07-10T10:10:00Z"
   },
   {
     "id": 22,
     "url": "https://tech.example.com/posts/figma-to-html",
     "summary": "FigmaのデザインをもとにHTML/CSSを組む手順。",
-    "tagIds": [13, 12],
+    "tags": [
+      { "id": 13, "name": "Figma" },
+      { "id": 12, "name": "CSS" }
+    ],
     "updatedAt": "2025-07-18T12:12:12Z"
   }
 ]

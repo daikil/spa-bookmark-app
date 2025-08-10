@@ -1,14 +1,14 @@
-"use client";
+'use client';
 
-import type { BookmarkList } from "@/type";
-import { useEffect, useState } from "react";
-import { BookmarkGrid } from "@/components/BookmarkGrid";
-import { InputUrlField } from "@/components/InputUrlField";
-import Pagination from "@mui/material/Pagination";
-import { getBookmarks, getCountAllBookmarks } from "@/api";
+import type { BookmarkList } from '@/type';
+import { useEffect, useState } from 'react';
+import { BookmarkGrid } from '@/components/BookmarkGrid';
+import { InputUrlField } from '@/components/InputUrlField';
+import Pagination from '@mui/material/Pagination';
+import { getBookmarks } from '@/api';
+import { OFFSET } from '@/const';
 
 export default function HomePage() {
-  const OFFSET = 10;
   const [pageCount, setPageCount] = useState<number>(0);
   const [bookmarkList, setBookmarkList] = useState<BookmarkList | null>(null);
   const [pageNum, setPageNum] = useState<number>(1);
@@ -21,9 +21,11 @@ export default function HomePage() {
   };
 
   useEffect(() => {
-    setPageCount(Math.ceil(getCountAllBookmarks() / OFFSET));
-    setBookmarkList(getBookmarks(pageNum, OFFSET));
+    const res = getBookmarks(pageNum, OFFSET);
+    setPageCount(Math.ceil(res.count / OFFSET));
+    setBookmarkList(res.list);
   }, [pageNum]);
+
   return (
     <>
       <InputUrlField />

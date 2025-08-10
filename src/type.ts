@@ -8,7 +8,7 @@ export type Bookmark = {
   id: number;
   url: string;
   summary: string;
-  tagIds: TagId[];
+  tags: Tag[];
   updatedAt: string;
 };
 

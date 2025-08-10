@@ -1,11 +1,12 @@
-"use client";
-import type { Tag, TagId } from "@/type";
-import { useState } from "react";
-import { getAllTags } from "@/api";
-import { TagList } from "@/components/TagList";
-import { Box } from "@mui/material";
-import { EditTagDialog } from "@/components/EditTagDialog";
-import { DeleteTagDialog } from "@/components/DeleteTagDialog";
+'use client';
+
+import type { Tag, TagId } from '@/type';
+import { useState } from 'react';
+import { getAllTags } from '@/api';
+import { TagList } from '@/components/TagList';
+import { Box } from '@mui/material';
+import { EditTagDialog } from '@/components/EditTagDialog';
+import { DeleteTagDialog } from '@/components/DeleteTagDialog';
 
 export default function TagsPage() {
   const [isOpenEditDialog, setIsOpenEditDialog] = useState<boolean>(false);

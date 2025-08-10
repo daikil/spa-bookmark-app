@@ -1,49 +1,47 @@
-import { useState } from "react";
-import Box from "@mui/material/Box";
-import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
-import SearchIcon from "@mui/icons-material/Search";
-import { validateInputSearchText, getErrorMessage } from "@/validate";
-import { useRouter } from "next/navigation";
+import { useState } from 'react';
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+import SearchIcon from '@mui/icons-material/Search';
+import { validateInputSearchText, getErrorMessage } from '@/validate';
 
 type Props = {
-  searchText: string;
-  setSearchText: (searchText: string) => void;
+  pushToSearchResultPage: (searchText: string) => void;
 };
 export const InputSearchTextField = (props: Props) => {
-  const router = useRouter();
+  const [searchText, setSearchText] = useState<string>('');
   const [hasError, setHasError] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [errorMessage, setErrorMessage] = useState<string>("");
+  const [errorMessage, setErrorMessage] = useState<string>('');
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsLoading(true);
-    const result = validateInputSearchText(props.searchText);
+    const result = validateInputSearchText(searchText);
 
     if (!result.success) {
-      setErrorMessage(getErrorMessage(result)?.root?.[0] ?? "");
+      setErrorMessage(getErrorMessage(result)?.root?.[0] ?? '');
       setHasError(true);
       setIsLoading(false);
       return;
     }
 
     setHasError(false);
-    setErrorMessage("");
+    setErrorMessage('');
     setIsLoading(false);
 
-    router.replace("/search/result");
+    props.pushToSearchResultPage(result.output);
   };
   return (
     <Box sx={{ marginBottom: 3 }}>
       <Box
         component="form"
         sx={{
-          maxWidth: "sm",
-          width: "96%",
-          margin: "0 auto",
-          display: "flex",
-          flexDirection: "column",
+          maxWidth: 'sm',
+          width: '96%',
+          margin: '0 auto',
+          display: 'flex',
+          flexDirection: 'column',
           rowGap: 1,
         }}
         noValidate
@@ -56,10 +54,10 @@ export const InputSearchTextField = (props: Props) => {
           type="text"
           variant="outlined"
           className="w-full"
-          value={props.searchText}
+          value={searchText}
           helperText={errorMessage}
           onChange={(e) => {
-            props.setSearchText(e.target.value);
+            setSearchText(e.target.value);
           }}
           error={hasError}
         />
